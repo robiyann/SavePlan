@@ -1,0 +1,18 @@
+{
+  "name": "Couple Saving Planner",
+  "short_name": "CoupleSaver",
+  "description": "Tabungan bersama untuk rencana masa depan kita berdua.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#09090b",
+  "background_color": "#09090b",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
