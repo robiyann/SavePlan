@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../lib/auth';
-import { HeartIcon, AlertTriangleIcon, TargetIcon, UsersIcon, CoinsIcon } from '../components/Icons';
+import { HeartIcon, AlertTriangleIcon, TargetIcon, UsersIcon, CoinsIcon, EyeIcon, EyeOffIcon } from '../components/Icons';
 import { LoginCoupleHero } from '../components/Illustrations';
 
 export async function getServerSideProps(context) {
@@ -22,6 +22,7 @@ export async function getServerSideProps(context) {
 
 export default function Login() {
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -105,17 +106,29 @@ export default function Login() {
 
           <div className="input-group">
             <label className="input-label" htmlFor="password">Password Akses</label>
-            <input
-              id="password"
-              type="password"
-              className="input-field"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              disabled={loading}
-              autoFocus
-            />
+            <div className="password-input-wrap">
+              <input
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                className="input-field"
+                placeholder={showPassword ? 'Masukkan password' : '••••••••'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                disabled={loading}
+                autoFocus
+              />
+              <button
+                type="button"
+                className="password-toggle-btn"
+                onClick={() => setShowPassword(!showPassword)}
+                title={showPassword ? 'Sembunyikan password' : 'Lihat password'}
+                aria-label={showPassword ? 'Sembunyikan password' : 'Lihat password'}
+                tabIndex={-1}
+              >
+                {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
+              </button>
+            </div>
           </div>
 
           <button type="submit" className="btn btn-primary login-submit" disabled={loading}>
