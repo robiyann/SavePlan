@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+/* Google Fonts loaded asynchronously in pages/_document.js */
 
 /* ============================================================
    DESIGN SYSTEM v3 — "Console" app shell
@@ -1808,5 +1808,14 @@ input[type='date'].input-field::-webkit-calendar-picker-indicator {
   .hero-glass-art svg {
     max-width: 100%;
     height: auto;
+  }
+}
+
+/* Optimasi GPU mobile: matikan animasi blur background orbs agar ringan & 60fps */
+@media (max-width: 768px) {
+  .ambient-orb {
+    animation: none !important;
+    filter: blur(52px) !important;
+    opacity: 0.32 !important;
   }
 }
